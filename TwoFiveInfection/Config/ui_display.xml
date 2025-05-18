@@ -1,0 +1,6 @@
+<configs>
+	<!--Farmers Gloves display text-->
+	<set xpath="/ui_display_info/item_display/item_display_info[@display_type='armorFarmerGloves']">
+		<display_entry name="dLootProb" title_key="statBonusHoney" display_type="Percent" display_leading_plus="true"/>
+	</set>
+</configs>

@@ -1,0 +1,4 @@
+Key,File,Type,UsedInMainMenu,NoTranslate,english
+armorFarmerGloves,items,Clothes,,,Farmer Gloves
+armorFarmerGlovesDesc,items,Clothes,,,"Medium Armor\nFit and healthy. Increases chance to find honey.\n\nFull Set Bonus: Gain more health and stamina from food."
+statBonusHoney,ui_display,Item stat,,,Honey Loot Bonus

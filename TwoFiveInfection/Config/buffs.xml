@@ -1,0 +1,55 @@
+<configs>			
+	<append xpath="/buffs">	
+		<buff name="buffTwoFiveInfection" name_key="buffTwoFiveInfection" description_key="buffTwoFiveInfectionDesc" remove_on_death="false">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<display_value value=".buffTwoFiveInfectionDisplay"/>
+			<!--update the display-->
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$killCountDown" operation="set" value="@twofiveKillCountMax"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTwoFiveInfectionDisplay" operation="set" value="@$killCountDown"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTwoFiveInfectionDisplay" operation="set" value="@$killCountDown"/>
+			</effect_group>
+			<!--player get infection whenever hit by a zombie-->
+			<effect_group>
+				<passive_effect name="BuffResistance" operation="base_add" value="-1" tags="buffInfectionCatch"/>
+				<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="buffInfectionCatch" >
+					<requirement name="EntityTagCompare" target="other" tags="walker,crawler,spider,zombie"/></triggered_effect> 		
+			</effect_group>
+			<!--increment kill count, reduce infection by 5% for each 100 kills-->
+			<!--increment the kill count on a kill-->
+			<effect_group>
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="$killCountDown" operation="add" value="-1">
+					<requirement name="EntityTagCompare" target="other" tags="walker,crawler,spider,zombie"/></triggered_effect> 		
+			</effect_group>
+			<!--reduce infection if kill countdown==0-->
+			<effect_group>
+				<requirement name="CVarCompare" cvar="$killCountDown" operation="LTE" value="0"/>
+				<requirement name="HasBuff" buff="buffInfectionMain" />
+					<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="infectionCounter" operation="add" value="@twofiveKillInfectionReduction"/>
+			</effect_group>
+			<!--set the kill count back to 0 after infection reduced-->
+			<effect_group>
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="$killCountDown" operation="set" value="@twofiveKillCountMax">
+					<requirement name="CVarCompare" cvar="$killCountDown" operation="LTE" value="0"/></triggered_effect> 		
+			</effect_group>				
+		</buff>		
+	</append>
+		
+	<!--adds the buffTwoFiveInfection buff to the player and sets some comfig variables-->
+	<append xpath="/buffs/buff[@name='buffStatusCheck01']">
+		<!-- auto add buffGameEventController to the player after initial spawn and any deaths.
+				It gets deleted on death as the Number of Zombie Kills counter gets reset on death-->
+		<effect_group>
+			<!--edit these 2 vars for kill count-->
+			<!--how many zombie kill to get a reduction in infection-->
+			<triggered_effect trigger="onSelfEnteredGame" action="ModifyCVar" cvar="twofiveKillCountMax" operation="set" value="5"/>
+			<!--how much reduction to get per twofiveKillCountMax 
+				NOTE:each % Reduction is about 16, below defaults to 80 wich is approx 5%. Other buffs on the player may effect it--> 
+			<triggered_effect trigger="onSelfEnteredGame" action="ModifyCVar" cvar="twofiveKillInfectionReduction" operation="set" value="-1250"/>
+				
+			<triggered_effect trigger="onSelfEnteredGame" action="AddBuff" buff="buffTwoFiveInfection">
+				<requirement name="!HasBuff" buff="buffTwoFiveInfection"/></triggered_effect>
+		</effect_group>
+	</append>
+</configs>

@@ -1,0 +1,40 @@
+<configs>
+	<!--change farmer gloves to add chance to find honey-->
+	<!--add a ID tag to the foodHoney for reference-->
+	<append xpath ="/items/item[@name='foodHoney']/property[@name='Tags']/@value">,TF_Honey</append> 
+	
+	<!--remove rifle stuff from the FarmerGloves. Replace with a change to find honey-->
+	<remove xpath="/items/item[@name='armorFarmerGloves']/effect_group[@name='FarmerGloves']/display_value[@name='dRifleDamage']"/>
+	<remove xpath="/items/item[@name='armorFarmerGloves']/effect_group/requirement[@name='HoldingItemHasTags' and @tags='perkDeadEye'] "/>
+	<remove xpath="/items/item[@name='armorFarmerGloves']/effect_group/passive_effect[@name='EntityDamage' and @tags='perkDeadEye'] "/>
+
+	<!--put it back with changes-->
+	<insertAfter xpath="/items/item[@name='armorFarmerGloves']/effect_group[@name='FarmerGloves']">	
+		<effect_group>
+			<passive_effect name="LootProb" operation="perc_add" value="2,4,6,8,10,20" tier="1,2,3,4,5,6" tags="TF_Honey"/>
+			<display_value name="dLootProb" value=".02,.04,.06,.08,.1,.2" tier="1,2,3,4,5,6"/> 	
+		</effect_group>
+	</insertAfter>
+	<!--END change farmer gloves to add chance to find honey-->
+	
+	<!--change honey to be only 3%-->
+	<!--remove the current honey settings-->
+	<remove xpath="/items/item[@name='foodHoney']/effect_group[@name='Food Tier 0']"/>
+	
+	<!--add back with changes-->
+	<append xpath ="/items/item[@name='foodHoney']">
+		<effect_group tiered="false" name="Food Tier 0">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="8"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="3"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="3">
+				<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+
+			<display_value name="dCureInfection" value=".03"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffInfectionAddCurePerc" operation="add" value="3"/>  <!--was 5-->
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffInfectionAddCure"/>
+		</effect_group>
+	</append> 
+	<!--END change honey to be only 3%-->
+	
+</configs>

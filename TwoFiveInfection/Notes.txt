@@ -1,0 +1,8 @@
+Two Five Infection
+
+1.0.1  17/5/2025 
+ - All zombie hits will result in infection (increase infection if player already infected)
+ - Vitamins can't be bought from Traders.
+ - Vitamins are a rare find in loot.
+ - Honey infection effect reduced from 5% to 3%.
+ - Farmers Gloves increase the chance to find honey.

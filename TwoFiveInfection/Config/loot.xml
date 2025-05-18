@@ -1,0 +1,33 @@
+<configs>
+	<!--remove vitamins from loot containers and add back with reduced loot probability-->
+	<remove xpath="lootcontainers/lootgroup[@name='survivalMedical']/item[@name='drugVitamins']"/>
+	<append xpath ="lootcontainers/lootgroup[@name='survivalMedical']">
+		<item name="drugVitamins" loot_prob_template="veryLow" force_prob="true" />
+	</append>
+	
+	<remove xpath="lootcontainers/lootgroup[@name='groupQuestMedical']/item[@name='drugVitamins']"/>
+	<append xpath ="lootcontainers/lootgroup[@name='groupQuestMedical']">
+		<item name="drugVitamins" count="1" loot_prob_template="veryLow" force_prob="true"/>
+	</append>
+	
+	<remove xpath="lootcontainers/lootgroup[@name='groupMedicalUncommon']/item[@name='drugVitamins']"/>
+	<append xpath ="lootcontainers/lootgroup[@name='groupMedicalUncommon']">
+		<item name="drugVitamins" loot_prob_template="veryLow" force_prob="true"/>
+	</append>
+	
+	<remove xpath="lootcontainers/lootgroup[@name='groupChemistryStationLoot02']/item[@name='drugVitamins']"/>
+	<append xpath ="lootcontainers/lootgroup[@name='groupChemistryStationLoot02']">
+		<item name="drugVitamins" count="1" loot_prob_template="veryLow" force_prob="true"/>
+	</append>
+	
+	<remove xpath="lootcontainers/lootgroup[@name='airdropMedicine']/item[@name='drugVitamins']"/>
+	<append xpath ="lootcontainers/lootgroup[@name='airdropMedicine']">
+		<item name="drugVitamins" count="1" loot_prob_template="veryLow" force_prob="true"/>
+	</append>
+	
+	<remove xpath="lootcontainers/lootgroup[@name='twitch_medspecial']/item[@name='drugVitamins']"/>
+	<append xpath ="lootcontainers/lootgroup[@name='twitch_medspecial']">
+		<item name="drugVitamins" count="1" loot_prob_template="veryLow" force_prob="true"/>
+	</append>
+	<!--END remove vitamins from loot containers and add back with reduced loot probability-->
+</configs>

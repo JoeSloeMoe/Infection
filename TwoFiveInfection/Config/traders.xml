@@ -1,0 +1,4 @@
+<configs>
+	<!--remove vitamins from trader stash-->
+	<remove xpath="/traders/trader_item_groups/trader_item_group[@name='medicine']/item[@name='drugVitamins']"/>
+</configs>
