@@ -4,6 +4,7 @@ Two Five Infection - code is free to use.
  - All zombie hits will result in infection (increase infection if player already infected)
  - Vitamins can't be bought from Traders.
  - Vitamins are a rare find in loot.
+ - Recipes for Antibiotics & Herbal Antibiotics now require honey as an ingredient.
  - Honey infection effect reduced from 5% to 3%.
  - Farmers Gloves increase the chance to find honey.
  - Every 100th Zombie Kill reduces infection by 5%. See the buff window for countdown to reduction.
