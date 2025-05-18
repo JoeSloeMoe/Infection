@@ -42,10 +42,9 @@
 				It gets deleted on death as the Number of Zombie Kills counter gets reset on death-->
 		<effect_group>
 			<!--edit these 2 vars for kill count-->
-			<!--how many zombie kill to get a reduction in infection-->
-			<triggered_effect trigger="onSelfEnteredGame" action="ModifyCVar" cvar="twofiveKillCountMax" operation="set" value="5"/>
-			<!--how much reduction to get per twofiveKillCountMax 
-				NOTE:each % Reduction is about 16, below defaults to 80 wich is approx 5%. Other buffs on the player may effect it--> 
+			<!--how many zombie kills to get a reduction in infection-->
+			<triggered_effect trigger="onSelfEnteredGame" action="ModifyCVar" cvar="twofiveKillCountMax" operation="set" value="100"/>
+			<!--how much reduction to get per twofiveKillCountMax each 1% reduction is -250 so 5% is -1250--> 
 			<triggered_effect trigger="onSelfEnteredGame" action="ModifyCVar" cvar="twofiveKillInfectionReduction" operation="set" value="-1250"/>
 				
 			<triggered_effect trigger="onSelfEnteredGame" action="AddBuff" buff="buffTwoFiveInfection">

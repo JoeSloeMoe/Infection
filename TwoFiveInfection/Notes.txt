@@ -1,4 +1,4 @@
-Two Five Infection
+Two Five Infection - code is free to use.
 
 1.0.1  17/5/2025 
  - All zombie hits will result in infection (increase infection if player already infected)
@@ -6,3 +6,4 @@ Two Five Infection
  - Vitamins are a rare find in loot.
  - Honey infection effect reduced from 5% to 3%.
  - Farmers Gloves increase the chance to find honey.
+ - Every 100th Zombie Kill reduces infection by 5%. See the buff window for countdown to reduction.
