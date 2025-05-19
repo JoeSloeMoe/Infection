@@ -1,0 +1,29 @@
+<configs>
+	<!--config for trees dropping honey-->
+	<remove xpath="/blocks/block[@name='treeMaster']/drop[@name='foodHoney']"/>
+	<append xpath ="/blocks/block[@name='treeMaster']">
+		<!--Loot drop probability for trees to drop honey after reading WasteLandTreasures Vol 1
+			Default in-game is prob="0.05" (5%) modified to prob=".1" (10%)-->
+		<drop event="Harvest" name="foodHoney" prob=".1" count="1" tag="WasteTreasuresHoneyHarvest"/>
+	</append>
+	
+	<!--config for treestumps dropping honey
+		There are 2 type of treestumps - random treestumps and POI treestumps.
+		Both have a prob="0.2" chance to drop honey.
+		Config is set here with no change but is included so that the value can be changed if needed-->
+	
+	<!--regular tree stumps-->
+	<remove xpath="/blocks/block[@name='treeStump']/drop[@name='foodHoney']"/>
+	<append xpath ="/blocks/block[@name='treeStump']">
+		<!--Loot drop probability for trees to drop honey after reading WasteLandTreasures Vol 1
+			Default in-game is prob="0.2" (20%) , change as needed-->
+		<drop event="Destroy" name="foodHoney" count="1" prob=".2"/>
+	</append>
+	<!--POI tree stumps-->
+	<remove xpath="/blocks/block[@name='treeStump']/drop[@name='foodHoney']"/>
+	<append xpath ="/blocks/block[@name='treeStump']">
+		<!--Loot drop probability for trees to drop honey after reading WasteLandTreasures Vol 1
+			Default in-game is prob="0.2" (20%) , change as needed-->
+		<drop event="Destroy" name="foodHoney" count="1" prob=".2"/>
+	</append>
+</configs>
