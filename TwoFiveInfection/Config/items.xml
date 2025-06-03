@@ -1,4 +1,10 @@
 <configs>
+	<!--edit this value to change the honey cost increase. Each point is worth 3 coin. e.g.
+		Default 7dtd value is 80 which equals 240 coin at the traders (without bonuses).
+		A value of 100 would cost 300 coin at a vending machine or trader.
+		Currently set to default, here for any future adjustemnts needs-->
+	<set xpath ="items/item[@name='foodHoney']/property[@name='EconomicValue']/@value">80</set>
+	
 	<!--change farmer gloves to add chance to find honey-->
 	<!--add a ID tag to the foodHoney for reference-->
 	<append xpath ="/items/item[@name='foodHoney']/property[@name='Tags']/@value">,TF_Honey</append> 

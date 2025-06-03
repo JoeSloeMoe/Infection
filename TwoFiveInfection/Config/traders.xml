@@ -1,4 +1,20 @@
 <configs>
 	<!--remove vitamins from trader stash-->
 	<remove xpath="/traders/trader_item_groups/trader_item_group[@name='medicine']/item[@name='drugVitamins']"/>
+	
+	<!-- add honey to the drinks vending machines.
+		edit the 'prob="0.25" value below to change the chance of finding in a drinks vending machine-->
+	<insertAfter xpath="/traders/trader_item_groups/trader_item_group[@name='groupFoodAll']">
+		<trader_item_group name="honeyVendingGroup">
+			<!--percentage chance to spawn in a vending machine, default 25% (0.25)-->
+			<item name="foodHoney" prob="0.25" force_prob="true"/>
+			<item name="drinkJarYuccaJuice" prob="0.05"/><!--Filler, can be any drink-->
+		</trader_item_group>	
+	</insertAfter>
+	<append xpath="/traders/trader_info[@id='4']">
+		<trader_items>
+			<item group="honeyVendingGroup" count="0,1"/>
+		</trader_items>
+	</append>
+	
 </configs>

@@ -12,3 +12,7 @@ Two Five Infection - code is free to use.
  - Increased probability for trees to drop honey after reading WasteLandTreasures Vol 1 from 5% to 10%
  - Added ability to configure honey droprates from Trees and Tree Stumps.
  
+ 1.0.3 2/6/2025
+ - Added honey to drink vending machines. 
+ - Added ability to change cost of honey (see items.xml)
+ 
